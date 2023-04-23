@@ -85,3 +85,22 @@ describe('Students functions: getYoungestStudent', ()=>{
         expect(getYoungestStudent({name: 'peter', lastname: 'parker'})).toEqual(expectederrormessage)
     });
 })
+describe('Students functions: getFullName', ()=>{
+    it('should return the full name', ()=>{
+        expect(getFullName(students)).toEqual(["Gordon Chen"])
+    })
+    it('should return nothing if there are no student', () => {
+        expect(getFullName([])).toEqual([])
+    })
+    it('should return the name of student if theres is only one student', () => {
+        const testStudent = [{firstName: 'john', lastName: 'Doe'}]
+        expect(getFullName(testStudent)).toEqual(["john Doe"])
+    })
+    it('should return error message if received anything that is not an array', () => {
+        const expectederrormessage = 'received input is not an array of students';
+        expect(getYoungestStudent(55)).toEqual(expectederrormessage)
+        expect(getYoungestStudent('hello world')).toEqual(expectederrormessage)
+        expect(getYoungestStudent(true)).toEqual(expectederrormessage)
+        expect(getYoungestStudent({name: 'Darren', lastname: 'Chen'})).toEqual(expectederrormessage)
+    });
+})
